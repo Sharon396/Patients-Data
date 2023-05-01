@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:patientsapp/api.dart';
 import 'package:patientsapp/notfication/push_notificatiob.dart';
 import 'package:patientsapp/screen_pateint.dart';
+import 'dart:async';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 // the startimg point of the program
@@ -19,21 +20,10 @@ void main() async {
 
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   final data = await getPaitentDetails(channelid: "1943514");
-   await showNotification(
-                data.channel!.field1!, "pateints pulse is  lower than normal");
-                print("noti will work");
- // await AndroidAlarmManager.initialize();
- // await AndroidAlarmManager.periodic(const Duration(seconds: 15), 0, () {
- //   data.feeds!.elementAt(1).field1 == "0"
- //       ? () async {
- //          
- //         }
- //       : () async {
- //           await showNotification(
- //               data.channel!.field1!, "pateints pulse is  lower than normal");
- //         };
- // });
-//
+  await showNotification(
+          data.channel!.field1!, "patients pulse is lower than normal");
+      print("notification will work");
+
   runApp(const MyApp());
 }
 
