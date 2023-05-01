@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:patientsapp/api.dart';
 import 'package:patientsapp/screen_pateint.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-void main() {
+// the startimg point of the program
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize the FlutterLocalNotificationsPlugin
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_icon');
+  final InitializationSettings initializationSettings = const InitializationSettings(
+    android: initializationSettingsAndroid,
+  );
+
   runApp(const MyApp());
 }
 
@@ -50,7 +63,9 @@ class _homescreenState extends State<homescreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(title: Text("Patient Data"),),
+      appBar: AppBar(
+        title: Text("Patient Data"),
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -76,7 +91,7 @@ class _homescreenState extends State<homescreen> {
                   );
                 },
                 child: ClipRRect(
-                  borderRadius :BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(25),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     width: 500,
@@ -84,9 +99,9 @@ class _homescreenState extends State<homescreen> {
                     color: Colors.blueGrey,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children:const [
-                         Text(textScaleFactor:3,"pateint 1"),
-                         Icon(size: 50,Icons.man),
+                      children: const [
+                        Text(textScaleFactor: 3, "pateint 1"),
+                        Icon(size: 50, Icons.man),
                       ],
                     ),
                   ),
@@ -111,17 +126,17 @@ class _homescreenState extends State<homescreen> {
                   );
                 },
                 child: ClipRRect(
-                  borderRadius :BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(25),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     width: 500,
                     height: 100,
                     color: Colors.blueGrey,
                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
-                        Text(textScaleFactor:3,"pateint 2"),
-                         Icon(size: 50,Icons.man),
+                        Text(textScaleFactor: 3, "pateint 2"),
+                        Icon(size: 50, Icons.man),
                       ],
                     ),
                   ),
@@ -146,17 +161,20 @@ class _homescreenState extends State<homescreen> {
                   );
                 },
                 child: ClipRRect(
-                  borderRadius :BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(25),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     width: 500,
                     color: Colors.blueGrey,
                     height: 100,
                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children:const [
-                         Text(textScaleFactor:3, "pateint 3"),
-                         Icon(Icons.man,size: 50,),
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: const [
+                        Text(textScaleFactor: 3, "pateint 3"),
+                        Icon(
+                          Icons.man,
+                          size: 50,
+                        ),
                       ],
                     ),
                   ),
