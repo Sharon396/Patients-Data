@@ -1,21 +1,36 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:patientsapp/api.dart';
+import 'package:patientsapp/notfication/push_notificatiob.dart';
 import 'package:patientsapp/screen_pateint.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 // the startimg point of the program
 void main() async {
+  
+
   WidgetsFlutterBinding.ensureInitialized();
-
   // Initialize the FlutterLocalNotificationsPlugin
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon');
-  final InitializationSettings initializationSettings = const InitializationSettings(
-    android: initializationSettingsAndroid,
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  const AndroidInitializationSettings initializationSettingsAndroid = const AndroidInitializationSettings('@mipmap/ic_launcher');
+  final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid,);
+ 
+ 
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  final data=await getPaitentDetails(channelid: "1943514");
+ await AndroidAlarmManager.initialize();
+  await AndroidAlarmManager.periodic(
+    const Duration(seconds: 1),
+    0,
+   (){
+     data.feeds!.elementAt(1).field1=="0"?() async {
+      await showNotification(data.channel!.field1!, "pateints pulse is  lower than normal");  
+    }:() async {
+  await showNotification(data.channel!.field1!, "pateints pulse is  lower than normal"); 
+  };
+   }
   );
-
+  
   runApp(const MyApp());
 }
 

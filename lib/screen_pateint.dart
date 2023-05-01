@@ -26,6 +26,7 @@ class _ScreenPatientState extends State<ScreenPatient> {
             ListTile(
               leading: Text(widget.pdata.channel!.field1!),
               title: Text(widget.pdata.feeds!.elementAt(1).field1!),
+              
             ),
             ListTile(
               leading: Text(widget.pdata.channel!.field2!),

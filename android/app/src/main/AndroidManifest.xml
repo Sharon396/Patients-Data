@@ -2,6 +2,8 @@
 
     
     package="com.example.patientsapp">
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
    <application
         android:label="patientsapp"
         android:name="${applicationName}"
@@ -39,8 +41,6 @@
        android:name="com.google.firebase.messaging.default_notification_channel_id"
       android:value="@string/default_notification_channel_id"
         android:name="com.dexterous.flutterlocalnotifications.default_icon"
-        android:resource="@drawable/ic_launcher" 
-            android:name="flutterEmbedding"
-            android:value="2" />
+        android:resource="@drawable/ic_launcher"  />
     </application>
 </manifest>
