@@ -19,19 +19,21 @@ void main() async {
 
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   final data = await getPaitentDetails(channelid: "1943514");
-  await AndroidAlarmManager.initialize();
-  await AndroidAlarmManager.periodic(const Duration(seconds: 1500), 0, () {
-    data.feeds!.elementAt(1).field1 == "0"
-        ? () async {
-            await showNotification(
+   await showNotification(
                 data.channel!.field1!, "pateints pulse is  lower than normal");
-          }
-        : () async {
-            await showNotification(
-                data.channel!.field1!, "pateints pulse is  lower than normal");
-          };
-  });
-
+                print("noti will work");
+ // await AndroidAlarmManager.initialize();
+ // await AndroidAlarmManager.periodic(const Duration(seconds: 15), 0, () {
+ //   data.feeds!.elementAt(1).field1 == "0"
+ //       ? () async {
+ //          
+ //         }
+ //       : () async {
+ //           await showNotification(
+ //               data.channel!.field1!, "pateints pulse is  lower than normal");
+ //         };
+ // });
+//
   runApp(const MyApp());
 }
 
