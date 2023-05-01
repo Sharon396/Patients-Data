@@ -7,30 +7,31 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 // the startimg point of the program
 void main() async {
-  
-
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the FlutterLocalNotificationsPlugin
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  const AndroidInitializationSettings initializationSettingsAndroid = const AndroidInitializationSettings('@mipmap/ic_launcher');
-  final InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid,);
- 
- 
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  final data=await getPaitentDetails(channelid: "1943514");
- await AndroidAlarmManager.initialize();
-  await AndroidAlarmManager.periodic(
-    const Duration(seconds: 1),
-    0,
-   (){
-     data.feeds!.elementAt(1).field1=="0"?() async {
-      await showNotification(data.channel!.field1!, "pateints pulse is  lower than normal");  
-    }:() async {
-  await showNotification(data.channel!.field1!, "pateints pulse is  lower than normal"); 
-  };
-   }
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      const AndroidInitializationSettings('@mipmap/ic_launcher');
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
   );
-  
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  final data = await getPaitentDetails(channelid: "1943514");
+  await AndroidAlarmManager.initialize();
+  await AndroidAlarmManager.periodic(const Duration(seconds: 1500), 0, () {
+    data.feeds!.elementAt(1).field1 == "0"
+        ? () async {
+            await showNotification(
+                data.channel!.field1!, "pateints pulse is  lower than normal");
+          }
+        : () async {
+            await showNotification(
+                data.channel!.field1!, "pateints pulse is  lower than normal");
+          };
+  });
+
   runApp(const MyApp());
 }
 
