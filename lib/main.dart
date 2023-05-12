@@ -19,10 +19,19 @@ void main() async {
   );
 
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  final data = await getPaitentDetails(channelid: "1943514");
+  final p1 = await getPaitentDetails(channelid: "1943514");
+  final p2 = await getPaitentDetails(channelid: "1943517");
+  final p3 = await getPaitentDetails(channelid: "1943526");
+
+  print(p1.channel!.field1);
+  print(p1.feeds!.first.field1);
+  if (p1.feeds!.first.field1!<80) {
   await showNotification(
-          data.channel!.field1!, "patients pulse is lower than normal");
-      print("notification will work");
+      p1.channel!.field1!, "patients pulse is lower than normal");
+}else{
+  await showNotification(
+      p1.channel!.field1!, "patients pulse is higher");
+}
 
   runApp(const MyApp());
 }
@@ -108,7 +117,7 @@ class _homescreenState extends State<homescreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
-                        Text(textScaleFactor: 3, "pateint 1"),
+                        Text(textScaleFactor: 3, "patient 1"),
                         Icon(size: 50, Icons.man),
                       ],
                     ),
@@ -143,7 +152,7 @@ class _homescreenState extends State<homescreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
-                        Text(textScaleFactor: 3, "pateint 2"),
+                        Text(textScaleFactor: 3, "patient 2"),
                         Icon(size: 50, Icons.man),
                       ],
                     ),
@@ -178,7 +187,7 @@ class _homescreenState extends State<homescreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
-                        Text(textScaleFactor: 3, "pateint 3"),
+                        Text(textScaleFactor: 3, "patient 3"),
                         Icon(
                           Icons.man,
                           size: 50,

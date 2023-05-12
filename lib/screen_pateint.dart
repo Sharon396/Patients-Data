@@ -25,16 +25,16 @@ class _ScreenPatientState extends State<ScreenPatient> {
             //pulse
             ListTile(
               leading: Text(widget.pdata.channel!.field1!),
-              title: Text(widget.pdata.feeds!.elementAt(1).field1!),
+              title: Text(widget.pdata.feeds!.elementAt(1).field1!as String),
               
             ),
             ListTile(
               leading: Text(widget.pdata.channel!.field2!),
-              title: Text(widget.pdata.feeds!.first.field2!),
+              title: Text(widget.pdata.feeds!.first.field2! as String),
             ),
             ListTile(
               leading: Text(widget.pdata.channel!.field3!),
-              title: Text(widget.pdata.feeds!.first.field3!),
+              title: Text(widget.pdata.feeds!.first.field3! as String),
             ),
           ],
         ),

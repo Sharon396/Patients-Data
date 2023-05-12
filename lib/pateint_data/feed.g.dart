@@ -9,9 +9,9 @@ part of 'feed.dart';
 Feed _$FeedFromJson(Map<String, dynamic> json) => Feed(
       createdAt: json['created_at'] as String?,
       entryId: json['entry_id'] as int?,
-      field1: json['field1'] as String?,
-      field2: json['field2'] as String?,
-      field3: json['field3'] as String?,
+      field1: json['field1'] as int?,
+      field2: json['field2'] as int?,
+      field3: json['field3'] as int?,
     );
 
 Map<String, dynamic> _$FeedToJson(Feed instance) => <String, dynamic>{

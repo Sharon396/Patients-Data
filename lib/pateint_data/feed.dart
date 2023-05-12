@@ -8,9 +8,9 @@ class Feed {
   String? createdAt;
   @JsonKey(name: 'entry_id')
   int? entryId;
-  String? field1;
-  String? field2;
-  String? field3;
+  int? field1;
+  int? field2;
+  int? field3;
 
   Feed({
     this.createdAt,
